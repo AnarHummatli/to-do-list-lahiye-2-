@@ -58,6 +58,7 @@ body {
 .search input {
     width: 24.83vw;
     height: 5.71vh;
+    padding-left: 1.25vw;
     border: 1px solid #C4C4C4;
     border-radius: 0.9vw;
     margin-left: 2.43vw;
