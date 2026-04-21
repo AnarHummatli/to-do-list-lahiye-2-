@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 29.17vw;
+    height: 33.71vh;
+}
+
+.orange {
+    background-color: #E5A52F;
+    width: 100%;
+    height: 4vh;
+    border-radius: 0.9vw 0.9vw 0 0;
+    border: 1px solid #C4C4C4;
+    border-bottom: none;
+}
+
+.main {
+    width: 100%;
+    height: 29.71vh;
+    border-radius: 0 0 0.9vw 0.9vw;
+    border: 1px solid #C4C4C4;
+    border-top: none;
+}
+
+.main h1 {
+    width: 17.19vw;
+    height: 5.99vh;
+    font-size: 2.26vw;
+    justify-self: center;
+    text-align: center;
+    padding-top: 1.13vw;
+    font-weight: 900;
+}
+
+.sort {
+    width: 2.17vw;
+    height: 2.14vh;
+    margin-top: 3vh;
+    display: block;
+    margin-left: auto;
+    margin-right: 2.6vw;
+}
+
+.search input {
+    width: 24.83vw;
+    height: 5.71vh;
+    border: 1px solid #C4C4C4;
+    border-radius: 0.9vw;
+    margin-left: 2.43vw;
+    margin-top: -1.43vh;
+}
+
+.search img {
+    width: 1.74vw;
+    height: 2.86vh;
+    margin-left: -4.68vw;
+    margin-bottom: -0.85vh;
+}
+
+.add {
+    width: 13.02vw;
+    height: 6vh;
+    display: flex;
+    justify-self: center;
+    position: relative;
+    margin-top: 2.65vh;
+}
+
+.add button:first-child {
+    width: 3.65vw;
+    height: 100%;
+    border: none;
+    font-size: 1.22vw;
+    border-radius: 50%;
+    background-color: #9953F1;
+    color: white;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+
+.add button:last-child {
+    width: 11.2vw;
+    height: 100%;
+    border: none;
+    font-size: 1.22vw;
+    border-radius: 0 3vw 3vw 0;
+    background-color: #833AE0;
+    color: white;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
