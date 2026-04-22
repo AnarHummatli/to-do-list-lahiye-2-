@@ -14,6 +14,50 @@ edit.alt = "Edit Image";
 
 let sortCorrector = true;
 
+
+function updateListStyles() {
+
+    let items = list.querySelectorAll("li");
+
+    items.forEach(function (item, index) {
+        if (items.length === 1) {
+            item.style.cssText = `
+            width: 100%;
+            height: 2.86vh;
+            font-size: 1.15vw;
+            margin-top: -0.33vh;
+            margin-left: 2.65vw;
+            `;
+
+        }
+
+        else if (index === items.length - 1) {
+            item.style.cssText = `
+            width: 100%;
+            height: 2.86vh;
+            font-size: 1.15vw;
+            margin-top: -0.7vh;
+            margin-bottom: 0.7vh;
+            margin-left: 2.65vw;
+            `;
+        }
+
+        else {
+            item.style.cssText = `
+            width: 100%;
+            height: 2.86vh;
+            font-size: 1.15vw;
+            margin-top: -0.7vh;
+            margin-bottom: 2.9vh;
+            margin-left: 2.65vw;
+            `;
+        }
+
+    });
+
+}
+
+
 sort.addEventListener("mouseenter", function () {
     if (sortCorrector) {
         sort.src = "Image/sort_down(black).svg"
@@ -62,6 +106,13 @@ clean.addEventListener("mouseleave", function () {
 
 addButton.addEventListener("click", function () {
 
+    if (input.value.trim() === "") {
+        input.style.border = "2px solid red";
+        return;
+    } else {
+        input.style.border = "1px solid #C4C4C4";
+    }
+
     box.style.cssText = `
     width: 24.83vw;
     min-height: 5.71vh;
@@ -90,31 +141,25 @@ addButton.addEventListener("click", function () {
     listItem.appendChild(editClone);
     listItem.appendChild(cleanClone);
 
-    listItem.style.cssText = `
-    width: 100%;
-    height: 2.86vh;
-    font-size: 1.39vw;
-    margin-top: 3vh;
-    margin-bottom: 5vh;
-    margin-left: 2.9vw;
-    `;
+    updateListStyles();
+
 
     cleanClone.style.cssText = `
     display: block;
     width: 1.74vw;
     height: 2.86vh;
     margin-left: auto;
-    margin-right: 1.77vw;
+    margin-right: 1.82vw;
     margin-top: -2.65vh;
     `;
 
     editClone.style.cssText = `
     display: block;
     width: 1.7vw;
-    height: 2.5vh;
+    height: 2.7vh;
     margin-left: auto;
-    margin-right: 5.6vw;
-    margin-top: -2.5vh;
+    margin-right: 5.65vw;
+    margin-top: -2.7vh;
     `;
 
     input.value = "";
