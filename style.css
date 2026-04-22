@@ -16,7 +16,7 @@ body {
 
 .container {
     width: 29.17vw;
-    height: 33.71vh;
+    min-height: 33.71vh;
 }
 
 .orange {
@@ -30,7 +30,7 @@ body {
 
 .main {
     width: 100%;
-    height: 29.71vh;
+    min-height: 29.71vh;
     border-radius: 0 0 0.9vw 0.9vw;
     border: 1px solid #C4C4C4;
     border-top: none;
@@ -58,6 +58,7 @@ body {
 .search input {
     width: 24.83vw;
     height: 5.71vh;
+    font-size: 1.39vw;
     padding-left: 1.25vw;
     border: 1px solid #C4C4C4;
     border-radius: 0.9vw;
@@ -79,9 +80,10 @@ body {
     justify-self: center;
     position: relative;
     margin-top: 2.65vh;
+    margin-bottom: 2.7vh;
 }
 
-.add button:first-child {
+#plusButton {
     width: 3.65vw;
     height: 100%;
     border: none;
@@ -94,7 +96,7 @@ body {
     z-index: 2;
 }
 
-.add button:last-child {
+#addButton {
     width: 11.2vw;
     height: 100%;
     border: none;
