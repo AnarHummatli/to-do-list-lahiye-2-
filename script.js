@@ -1,10 +1,12 @@
 let sort = document.querySelector(".sort");
+let search = document.querySelector(".search");
 let clean = document.querySelector(".search img");
 let input = document.querySelector(".search input");
 let plusButton = document.querySelector("#plusButton");
 let addButton = document.querySelector("#addButton");
 let box = document.querySelector(".box");
 let listBar = document.querySelector(".listBar");
+let space = document.querySelector("#space");
 
 
 let list = document.createElement("ol");
@@ -159,20 +161,26 @@ addButton.addEventListener("click", function () {
     height: 2.7vh;
     margin-left: auto;
     margin-right: 5.65vw;
-    margin-top: -2.7vh;
+    margin-top: -2.6vh;
     `;
 
     input.value = "";
-
-    // // input.style.display = "none";
+    search.style.display = "none";
+    space.style.display = "none";
 
     cleanClone.addEventListener("mouseenter", function () {
         cleanClone.src = "Image/exit(purple).svg"
     });
 
-    // cleanClone.addEventListener("click", function () {
-    //     
-    // });
+    cleanClone.addEventListener("click", function () {
+        listItem.remove();
+        updateListStyles();
+        if (list.children.length == 0) {
+            box.style.cssText = `
+                display: none;
+            `;
+        }
+    });
 
     cleanClone.addEventListener("mouseleave", function () {
         cleanClone.src = "Image/exit.svg"
@@ -190,4 +198,11 @@ addButton.addEventListener("click", function () {
         editClone.src = "Image/edit.png"
     });
 
+});
+
+plusButton.addEventListener("click", function () {
+    search.style.display = "flex";
+    clean.style.cssText = `
+    margin-left: -4.55vw;
+    `;
 });
