@@ -17,6 +17,7 @@ edit.alt = "Edit Image";
 let sortCorrector = true;
 
 
+
 function updateListStyles() {
 
     let items = list.querySelectorAll("li");
@@ -60,6 +61,9 @@ function updateListStyles() {
 }
 
 
+
+
+
 sort.addEventListener("mouseenter", function () {
     if (sortCorrector) {
         sort.src = "Image/sort_down(black).svg"
@@ -93,6 +97,10 @@ sort.addEventListener("mouseleave", function () {
     }
 });
 
+
+
+
+
 clean.addEventListener("click", function () {
     input.value = "";
 });
@@ -104,6 +112,9 @@ clean.addEventListener("mouseenter", function () {
 clean.addEventListener("mouseleave", function () {
     clean.src = "Image/exit.svg"
 });
+
+
+
 
 
 addButton.addEventListener("click", function () {
@@ -176,9 +187,8 @@ addButton.addEventListener("click", function () {
         listItem.remove();
         updateListStyles();
         if (list.children.length == 0) {
-            box.style.cssText = `
-                display: none;
-            `;
+            box.style.display = "none";
+            search.style.display = "flex";
         }
     });
 
@@ -200,9 +210,39 @@ addButton.addEventListener("click", function () {
 
 });
 
+
+
+
+
 plusButton.addEventListener("click", function () {
     search.style.display = "flex";
     clean.style.cssText = `
     margin-left: -4.55vw;
     `;
+});
+
+
+
+
+
+sort.addEventListener("click", function () {
+    let items = Array.from(list.querySelectorAll("li"));
+
+    items.sort(function (a, b) {
+        let textA = a.childNodes[0].textContent.trim().toLowerCase();
+        let textB = b.childNodes[0].textContent.trim().toLowerCase();
+
+        if (sortCorrector) {
+            return textA.localeCompare(textB);
+        } else {
+            return textB.localeCompare(textA);
+        }
+    });
+
+    list.innerHTML = "";
+    items.forEach(function (item) {
+        list.appendChild(item);
+    });
+
+    updateListStyles();
 });
