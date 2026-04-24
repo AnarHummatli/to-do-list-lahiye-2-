@@ -67,11 +67,15 @@ function updateListStyles() {
 sort.addEventListener("mouseenter", function () {
     if (sortCorrector) {
         sort.src = "Image/sort_down(black).svg"
+    } else {
+        sort.src = "Image/sort_up(black).svg"
     }
 });
 sort.addEventListener("mouseleave", function () {
     if (sortCorrector) {
         sort.src = "Image/sort_down.svg"
+    } else {
+        sort.src = "Image/sort_up.svg"
     }
 });
 
@@ -82,18 +86,6 @@ sort.addEventListener("click", function () {
     } else {
         sort.src = "Image/sort_down.svg"
         sortCorrector = true;
-    }
-});
-
-sort.addEventListener("mouseenter", function () {
-    if (!sortCorrector) {
-        sort.src = "Image/sort_up(black).svg"
-    }
-});
-
-sort.addEventListener("mouseleave", function () {
-    if (!sortCorrector) {
-        sort.src = "Image/sort_up.svg"
     }
 });
 
@@ -134,7 +126,7 @@ addButton.addEventListener("click", function () {
     border-radius: 0.9vw;
     margin-left: 2.43vw; 
     margin-top: -1.43vh;
-    margin-bottom: 3.3vh;
+    margin-bottom: 2.65vh;
     `;
 
     listBar.style.cssText = `
@@ -162,7 +154,7 @@ addButton.addEventListener("click", function () {
     width: 1.74vw;
     height: 2.86vh;
     margin-left: auto;
-    margin-right: 1.82vw;
+    margin-right: 2vw;
     margin-top: -2.65vh;
     `;
 
@@ -171,11 +163,12 @@ addButton.addEventListener("click", function () {
     width: 1.7vw;
     height: 2.7vh;
     margin-left: auto;
-    margin-right: 5.65vw;
-    margin-top: -2.6vh;
+    margin-right: 5.8vw;
+    margin-top: -2.8vh;
     `;
 
     input.value = "";
+    space.style.display = "none";
     search.style.display = "none";
     space.style.display = "none";
 
@@ -189,6 +182,9 @@ addButton.addEventListener("click", function () {
         if (list.children.length == 0) {
             box.style.display = "none";
             search.style.display = "flex";
+            clean.style.cssText = `
+            margin-left: -4.75vw;
+            `;
         }
     });
 
@@ -217,7 +213,7 @@ addButton.addEventListener("click", function () {
 plusButton.addEventListener("click", function () {
     search.style.display = "flex";
     clean.style.cssText = `
-    margin-left: -4.55vw;
+    margin-left: -4.75vw;
     `;
 });
 
@@ -246,3 +242,5 @@ sort.addEventListener("click", function () {
 
     updateListStyles();
 });
+
+
