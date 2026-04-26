@@ -14,7 +14,7 @@ let edit = document.createElement("img");
 edit.src = "Image/edit.png";
 edit.alt = "Edit Image";
 
-let sortCorrector = true;
+
 
 
 
@@ -64,6 +64,8 @@ function updateListStyles() {
 
 
 
+let sortCorrector = true;
+
 sort.addEventListener("mouseenter", function () {
     if (sortCorrector) {
         sort.src = "Image/sort_down(black).svg"
@@ -81,11 +83,11 @@ sort.addEventListener("mouseleave", function () {
 
 sort.addEventListener("click", function () {
     if (sortCorrector) {
-        sort.src = "Image/sort_up.svg"
         sortCorrector = false;
+        sort.src = "Image/sort_up(black).svg";
     } else {
-        sort.src = "Image/sort_down.svg"
         sortCorrector = true;
+        sort.src = "Image/sort_down(black).svg";
     }
 });
 
@@ -137,6 +139,9 @@ addButton.addEventListener("click", function () {
 
     let listItem = document.createElement("li");
     listItem.textContent = input.value;
+    listItem.style.display = "flex";
+    listItem.style.alignItems = "center";
+    listItem.style.justifyContent = "flex-start";
 
     let editClone = edit.cloneNode(true);
     let cleanClone = clean.cloneNode(true);
@@ -155,7 +160,7 @@ addButton.addEventListener("click", function () {
     height: 2.86vh;
     margin-left: auto;
     margin-right: 2vw;
-    margin-top: -2.65vh;
+    margin-top: -2.68vh;
     `;
 
     editClone.style.cssText = `
@@ -164,13 +169,12 @@ addButton.addEventListener("click", function () {
     height: 2.7vh;
     margin-left: auto;
     margin-right: 5.8vw;
-    margin-top: -2.8vh;
+    margin-top: -2.55vh;
     `;
 
     input.value = "";
     space.style.display = "none";
     search.style.display = "none";
-    space.style.display = "none";
 
     cleanClone.addEventListener("mouseenter", function () {
         cleanClone.src = "Image/exit(purple).svg"
@@ -192,16 +196,103 @@ addButton.addEventListener("click", function () {
         cleanClone.src = "Image/exit.svg"
     });
 
+
+    let isEditing = false;
+
     editClone.addEventListener("mouseenter", function () {
-        editClone.src = "Image/edit(purple).png"
+        if (!isEditing) {
+            editClone.src = "Image/edit(purple).png";
+        } else {
+            editClone.src = "Image/add(purple).png";
+        }
     });
 
-    // editClone.addEventListener("click", function () {
+    editClone.addEventListener("click", function () {
+        if (!isEditing) {
+            isEditing = true;
 
-    // });
+            let currentText = listItem.childNodes[0].textContent.trim();
+            listItem.childNodes[0].textContent = "";
+
+            let inputClone = document.createElement("input");
+            inputClone.type = "text";
+            inputClone.value = currentText;
+
+            inputClone.style.cssText = `
+            width: 11.7vw;
+            height: 3.5vh; 
+            border: 0.11vw solid black;
+            border-radius: 0.55vw;
+            outline: none;
+            font-size: 1.15vw;
+            padding-left: 0.8vw;
+            margin-top: -1vw;
+        `;
+
+            listItem.prepend(inputClone);
+            inputClone.focus();
+
+            editClone.src = "Image/add.png";
+            editClone.style.cssText = `
+            display: block;
+            height: 2.9vh;
+            margin-left: auto;
+            margin-right: 5.8vw;
+            margin-top: -3.28vh;
+            `;
+
+            cleanClone.style.cssText = `
+            display: block;
+            width: 1.74vw;
+            height: 2.86vh;
+            margin-left: auto;
+            margin-right: 2vw;
+            margin-top: -2.9vh;
+            `;
+
+        } else {
+            let inputField = listItem.querySelector("input");
+            let newValue = inputField.value.trim();
+
+            if (newValue === "") {
+                inputField.style.border = "0.11vw solid red";
+                return;
+            }
+
+            inputField.remove();
+            listItem.childNodes[0].textContent = newValue;
+
+            isEditing = false;
+            editClone.src = "Image/edit(purple).png";
+
+            cleanClone.style.cssText = `
+            display: block;
+            width: 1.74vw;
+            height: 2.86vh;
+            margin-left: auto;
+            margin-right: 2vw;
+            margin-top: -2.68vh;
+            `;
+
+            editClone.style.cssText = `
+            display: block;
+            width: 1.7vw;
+            height: 2.7vh;
+            margin-left: auto;
+            margin-right: 5.8vw;
+            margin-top: -2.55vh;
+            `;
+
+            isEditing = false;
+        }
+    });
 
     editClone.addEventListener("mouseleave", function () {
-        editClone.src = "Image/edit.png"
+        if (!isEditing) {
+            editClone.src = "Image/edit.png";
+        } else {
+            editClone.src = "Image/add.png";
+        }
     });
 
 });
@@ -211,10 +302,27 @@ addButton.addEventListener("click", function () {
 
 
 plusButton.addEventListener("click", function () {
-    search.style.display = "flex";
-    clean.style.cssText = `
-    margin-left: -4.75vw;
+
+    if (space) {
+        space.style.display = "none";
+    }
+
+    search.style.cssText = `
+        display: flex;
+        margin-bottom: 2.65vh;
+        margin-top: 0;
+        order: -1;
     `;
+
+    if (box.style.display !== "none") {
+        box.parentElement.insertBefore(search, box);
+    }
+
+    clean.style.cssText = `
+        margin-left: -4.75vw;
+    `;
+    
+    input.focus();
 });
 
 
